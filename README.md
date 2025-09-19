@@ -16,7 +16,8 @@ Elevate your Bubble.io applications with the ultimate environmental awareness to
 
 ![engagement](https://github.com/user-attachments/assets/f8733837-6a9f-4618-b821-61f8f7ecf6ba)
 
-![Uploading image.png…]()
+<img width="1280" height="599" alt="image" src="https://github.com/user-attachments/assets/f2bc9554-8450-4200-b1b6-c5d799f5a054" />
+
 
 
 
