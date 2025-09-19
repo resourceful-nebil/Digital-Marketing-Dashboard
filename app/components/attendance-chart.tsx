@@ -12,7 +12,7 @@ interface AttendanceChartProps {
 }
 
 export function AttendanceChart({ students, getAttendanceTrend }: AttendanceChartProps) {
-  const attendanceTrendData = getAttendanceTrend().map(a => ({ date: a.date, attendance: a.percentage }));
+  const attendanceTrendData = getAttendanceTrend().map((a: { date: any; percentage: any; }) => ({ date: a.date, attendance: a.percentage }));
 
   const handleExport = async (format: 'pdf' | 'jpg') => {
     const element = document.getElementById('attendance-chart');
