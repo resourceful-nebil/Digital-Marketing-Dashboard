@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { dummyData } from '../lib/dummyData';
 
-type Student = typeof dummyData.students[0];
+export type Student = typeof dummyData.students[0];
 type Attendance = Student['attendance'][0];
 type Query = Student['queries'][0];
 
@@ -23,7 +23,7 @@ export const useDashboardData = () => {
     return allAttendance.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   };
 
-  const getEngagementByGrade = () => {
+  const getEngagementByGrade = (): Record<number, { totalSessions: number; totalDuration: number; count: number }> => {
     return students.reduce((acc, student) => {
       if (!acc[student.grade]) acc[student.grade] = { totalSessions: 0, totalDuration: 0, count: 0 };
       acc[student.grade].totalSessions += student.engagement.weeklySessions;
@@ -41,7 +41,7 @@ export const useDashboardData = () => {
       const end = filters.endDate ? new Date(filters.endDate) : new Date();
       filtered = filtered.map(s => ({
         ...s,
-        attendance: s.attendance.filter(a => {
+        attendance: s.attendance.filter((a: Attendance) => {
           const date = new Date(a.date);
           return date >= start && date <= end;
         }),

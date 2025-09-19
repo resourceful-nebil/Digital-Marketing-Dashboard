@@ -8,6 +8,7 @@ import { AttendanceChart } from "../app/components/attendance-chart";
 import { StudentQueries } from "../app/components/student-queries";
 import { FilterControls } from "../app/components//filter-controls";
 import { useDashboardData } from '@/hooks/useDashboardData';
+import { Student } from "@/hooks/useDashboardData"; // Import for type consistency
 
 export default function DashboardPage() {
   const { students, loading, getAttendanceTrend, getEngagementByGrade, applyFilters } = useDashboardData();

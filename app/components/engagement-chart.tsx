@@ -1,14 +1,15 @@
-'use client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Download } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { Download } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { Student } from "@/hooks/useDashboardData";
 
 interface EngagementChartProps {
-  students: any[];
-  getEngagementByGrade: () => any;
+  students: Student[];
+  getEngagementByGrade: () => Record<number, { totalSessions: number; totalDuration: number; count: number }>;
 }
 
 export function EngagementChart({ students, getEngagementByGrade }: EngagementChartProps) {
@@ -18,20 +19,20 @@ export function EngagementChart({ students, getEngagementByGrade }: EngagementCh
     duration: (totalDuration / count) * 60, // Convert to minutes for consistency
   }));
 
-  const handleExport = async (format: 'pdf' | 'jpg') => {
-    const element = document.getElementById('engagement-chart');
+  const handleExport = async (format: "pdf" | "jpg") => {
+    const element = document.getElementById("engagement-chart");
     if (!element) return;
-    if (format === 'jpg') {
+    if (format === "jpg") {
       const canvas = await html2canvas(element);
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/jpeg');
-      link.download = 'engagement.jpg';
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/jpeg");
+      link.download = "engagement.jpg";
       link.click();
     } else {
       const canvas = await html2canvas(element);
       const pdf = new jsPDF();
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 180, 160);
-      pdf.save('engagement.pdf');
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 10, 10, 180, 160);
+      pdf.save("engagement.pdf");
     }
   };
 
@@ -40,10 +41,10 @@ export function EngagementChart({ students, getEngagementByGrade }: EngagementCh
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg font-semibold">Engagement by Grade</CardTitle>
         <div className="flex space-x-2">
-          <Button variant="outline" size="sm" onClick={() => handleExport('pdf')}>
+          <Button variant="outline" size="sm" onClick={() => handleExport("pdf")}>
             <Download className="h-4 w-4 mr-1" /> PDF
           </Button>
-          <Button variant="outline" size="sm" onClick={() => handleExport('jpg')}>
+          <Button variant="outline" size="sm" onClick={() => handleExport("jpg")}>
             <Download className="h-4 w-4 mr-1" /> JPG
           </Button>
         </div>
@@ -57,9 +58,9 @@ export function EngagementChart({ students, getEngagementByGrade }: EngagementCh
               <YAxis stroke="#6B7280" fontSize={12} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E5E7EB',
-                  borderRadius: '8px',
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #E5E7EB",
+                  borderRadius: "8px",
                 }}
               />
               <Bar dataKey="sessions" fill="var(--chart-1)" name="Avg Sessions" />
