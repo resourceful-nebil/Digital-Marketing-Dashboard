@@ -1,3 +1,27 @@
+# Fayeda Academy Dashboard & Weather & Air Quality Plugin Documentation
+
+## Overview
+### Fayeda Academy Dashboard
+The Fayeda Academy Dashboard is a Next.js application designed to provide insights into student engagement, attendance, and queries for grades 9-12. It features a responsive layout with charts, filters, and export capabilities for PDF and JPG reports.
+
+### Weather & Air Quality Plugin for Bubble
+Elevate your Bubble.io applications with the ultimate environmental awareness tool. The "Weather & Air Quality" plugin seamlessly integrates comprehensive weather forecasts and real-time air quality data into your projects, empowering users with actionable insights right at their fingertips.
+
+## Installation
+### Fayeda Academy Dashboard
+1. Clone the repository or create a new Next.js project:
+   ```bash
+   npx create-next-app@latest fayeda-academy-dashboard --yes
+   cd fayeda-academy-dashboard
+
+![engagement](https://github.com/user-attachments/assets/f8733837-6a9f-4618-b821-61f8f7ecf6ba)
+
+![Uploading image.png…]()
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
