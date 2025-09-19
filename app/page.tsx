@@ -1,3 +1,5 @@
+'use client';
+
 import { DashboardHeader } from "../app/components/dashboard-header";
 import { DashboardSidebar } from "../app/components/dashboard-sidebar";
 import { SummaryCards } from "../app/components/summary-cards";
